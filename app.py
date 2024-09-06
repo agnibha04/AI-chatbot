@@ -18,7 +18,7 @@ app.config['SESSION_FILE_DIR'] = session_dir
 app.config['SESSION_PERMANENT'] = False
 Session(app)
 
-api_key='AIzaSyC6UDvIXqJOI0OIa7JkpxhdREg8yJZCAkQ'
+api_key='your google gemini api-key'
 
 def generate_response(prompt):
     model = ChatGoogleGenerativeAI(model="gemini-pro", convert_system_message_to_human=True, google_api_key=api_key)
