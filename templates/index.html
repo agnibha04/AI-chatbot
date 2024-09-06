@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1F2833;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 10px;
+            background-color: #0B0C10;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1 {
+            text-align: center;
+            color: #66FCF1;
+            margin-bottom: 10px;
+        }
+
+        .messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            display: flex;
+            max-width: 80%;
+            padding: 10px;
+            border-radius: 10px;
+            position: relative;
+            align-self: flex-start;
+            background-color: #45A29E;
+            color: #0B0C10;
+        }
+
+        .message.user {
+            align-self: flex-end;
+            background-color: #66FCF1;
+            color: #0B0C10;
+        }
+
+        .message.bot {
+            background-color: #C5C6C7;
+            color: #0B0C10;
+        }
+
+        .message.user::after, .message.bot::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid;
+        }
+
+        .message.user::after {
+            border-top-color: #66FCF1;
+            left: auto;
+            right: -10px;
+        }
+
+        .message.bot::after {
+            border-top-color: #C5C6C7;
+            left: -10px;
+        }
+
+        form {
+            display: flex;
+            gap: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #C5C6C7;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #C5C6C7;
+            border-radius: 20px;
+            font-size: 16px;
+            background-color: #1F2833;
+            color: #C5C6C7;
+        }
+
+        input[type="submit"] {
+            padding: 10px 15px;
+            background-color: #66FCF1;
+            color: #0B0C10;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45A29E;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Chatbot</h1>
+        <div class="messages">
+            {% for message in conversation %}
+                <div class="message {{ message.role }}">
+                    <p>{{ message.text }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <form method="POST">
+            <input type="text" name="user_input" placeholder="Type a message..." required>
+            <input type="submit" value="Send">
+        </form>
+    </div>
+</body>
+</html>
