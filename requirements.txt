@@ -1,0 +1,6 @@
+Flask==3.0.3
+Flask-Session==0.8.0
+google-generativeai==0.7.2
+langchain-google-genai==1.0.8
+langchain-core==0.2.26
+gunicorn
