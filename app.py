@@ -24,7 +24,7 @@ def generate_response(prompt):
     model = ChatGoogleGenerativeAI(model="gemini-pro", convert_system_message_to_human=True, google_api_key=api_key)
 
     messages = [
-        SystemMessage(content="You act as an AI chatbot and converse with the user to help them clear their doubts.Provide links to the user if necessary.Keep your answers short and to the point."),
+        SystemMessage(content="You act as an AI chatbot and converse with the user to help them clear their doubts.Keep your answers short and to the point."),
         HumanMessage(content=prompt)
     ]
     
